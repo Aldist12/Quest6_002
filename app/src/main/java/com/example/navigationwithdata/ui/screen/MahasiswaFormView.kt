@@ -183,4 +183,11 @@ fun MahasiswaFormView(
                         imageVector = Icons.Filled.Email,
                         contentDescription = "email",
                     )
-                }
+                },
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Email,
+                    imeAction = ImeAction.Next
+                ),
+                singleLine = true,
+                shape = RoundedCornerShape(50.dp)
+            )
