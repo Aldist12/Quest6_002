@@ -7,10 +7,14 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -45,45 +49,28 @@ fun MahasiswaFormView(
     onBackButtonClicked: () -> Unit
 ) {
 
-    var nama by remember {
-        mutableStateOf("")
-    }
-
-    var nim by remember {
-        mutableStateOf("")
-    }
-
-    var email by remember {
-        mutableStateOf("")
-    }
-
-    var listData: MutableList<String> =
-        mutableListOf(nim, nama, email)
+    var nama by remember { mutableStateOf("") }
+    var nim by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
+    var listData: MutableList<String> = mutableListOf(nim, nama, email)
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(
-                color = colorResource(id = R.color.primary)
-            ),
+            .background(color = colorResource(id = R.color.primary))
+            .padding(WindowInsets.systemBars.asPaddingValues()), // Adjusts to system bars dynamically
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
-        Spacer(modifier = Modifier.padding(26.dp))
         Row(
             verticalAlignment = Alignment.CenterVertically
         ) {
-
             Image(
                 painter = painterResource(id = R.drawable.logoumy),
                 contentDescription = "",
                 modifier = Modifier.size(45.dp)
             )
 
-            Spacer(
-                modifier = Modifier
-                    .padding(16.dp)
-            )
+            Spacer(modifier = Modifier.padding(16.dp))
 
             Column {
                 Text(
@@ -100,21 +87,15 @@ fun MahasiswaFormView(
                 )
             }
         }
-    }
 
-    Spacer(
-        modifier = Modifier
-            .padding(top = 16.dp,)
-    )
+        Spacer(modifier = Modifier.padding(16.dp))
+    }
 
     Box(
         modifier = Modifier
             .background(
                 color = Color.White,
-                shape = RoundedCornerShape(
-                    topEnd = 15.dp,
-                    topStart = 15.dp
-                )
+                shape = RoundedCornerShape(topEnd = 15.dp, topStart = 15.dp)
             )
             .fillMaxSize()
     ) {
@@ -124,6 +105,8 @@ fun MahasiswaFormView(
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Spacer(modifier = Modifier.height(32.dp)) // Extra spacer to ensure proper clearance
+
             Text(
                 text = "Masukkan Data Kamu",
                 fontWeight = FontWeight.Bold,
@@ -143,14 +126,11 @@ fun MahasiswaFormView(
                 label = { Text(text = "Nomor Induk Mahasiswa") },
                 leadingIcon = {
                     Icon(imageVector = Icons.Filled.Info, contentDescription = "")
-
                 },
-
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Number,
                     imeAction = ImeAction.Next
                 ),
-
                 singleLine = true,
                 shape = RoundedCornerShape(50.dp)
             )
