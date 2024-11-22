@@ -159,10 +159,7 @@ fun MahasiswaFormView(
             OutlinedTextField(
                 modifier = Modifier.fillMaxWidth(),
                 value = nama,
-                onValueChange = {
-                    val it = ""
-                    nama = it
-                },
+                onValueChange = { nama = it },
                 label = { Text(text = "Nama Mahasiswa") },
                 leadingIcon = {
                     Icon(imageVector = Icons.Filled.Person, contentDescription = "")
