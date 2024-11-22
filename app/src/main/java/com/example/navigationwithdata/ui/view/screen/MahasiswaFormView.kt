@@ -58,7 +58,7 @@ fun MahasiswaFormView(
         modifier = Modifier
             .fillMaxSize()
             .background(color = colorResource(id = R.color.primary))
-            .padding(WindowInsets.systemBars.asPaddingValues()), // Adjusts to system bars dynamically
+            .padding(WindowInsets.systemBars.asPaddingValues()),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Row(
@@ -105,7 +105,7 @@ fun MahasiswaFormView(
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Spacer(modifier = Modifier.height(32.dp)) // Extra spacer to ensure proper clearance
+            Spacer(modifier = Modifier.height(32.dp))
 
             Text(
                 text = "Masukkan Data Kamu",
