@@ -15,6 +15,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -63,7 +64,7 @@ fun RencanaStudyView(
     var listData: MutableList<String> = mutableListOf(chosenDropdown, pilihanKelas)
 
     Column(
-       modifier = androidx.compose.ui.Modifier
+        modifier = androidx.compose.ui.Modifier
             .fillMaxSize()
             .background(color = colorResource(id = R.color.primary))
     ) {
@@ -115,9 +116,9 @@ fun RencanaStudyView(
                             selectedValue = chosenDropdown,
                             options = MataKuliah.options,
                             label = "Mata Kuliah",
-                          onValueChangeEvent = {
-                              chosenDropdown = it
-                          }
+                            onValueChangeEvent = {
+                                chosenDropdown = it
+                            }
                         )
                         Spacer(modifier = Modifier.padding(8.dp))
                         HorizontalDivider()
@@ -160,6 +161,26 @@ fun RencanaStudyView(
                                 modifier = Modifier.padding(start = 8.dp)
                             )
                         }
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceEvenly
+                        ) {
+                            Button(onClick = { onBackButtonClicked() }) {
+                                Text(text = "Kembali")
+                            }
+                            Button(
+                                onClick = { onSubmitButtonClicked(listData) },
+                                enabled = checked
+                            ) {
+                                Text(text = "Lanjut")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 
 
