@@ -165,3 +165,10 @@ fun MahasiswaFormView(
                 leadingIcon = {
                     Icon(imageVector = Icons.Filled.Person, contentDescription = "")
                 },
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Text,
+                    imeAction = ImeAction.Next
+                ),
+                singleLine = true,
+                shape = RoundedCornerShape(50.dp)
+            )
