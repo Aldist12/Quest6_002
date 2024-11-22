@@ -1,5 +1,6 @@
 package com.example.navigationwithdata
 
+import MahasiswaApp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -11,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+
 import com.example.navigationwithdata.ui.theme.NavigationWithDataTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,8 +22,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             NavigationWithDataTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                    MahasiswaApp(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -45,8 +46,3 @@ fun GreetingPreview() {
         Greeting("Android")
     }
 }
-
-data class RencanaStudy(
-    val mataKuliah:String = "",
-    val kelas:String = "",
-)
