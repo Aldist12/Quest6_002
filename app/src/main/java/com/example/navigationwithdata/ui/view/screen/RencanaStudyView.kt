@@ -7,10 +7,13 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -47,25 +50,24 @@ fun RencanaStudyView(
     mahasiswa: Mahasiswa,
     onSubmitButtonClicked: (MutableList<String>) -> Unit,
     onBackButtonClicked: () -> Unit
-){
-    var chosenDropdown by remember {
-        mutableStateOf("")
-    }
+) {
+    var chosenDropdown by remember { mutableStateOf("") }
     var checked by remember { mutableStateOf(false) }
     var pilihanKelas by remember { mutableStateOf("") }
     var listData: MutableList<String> = mutableListOf(chosenDropdown, pilihanKelas)
 
-    Column (
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .background(color = colorResource(id = R.color.primary))
-    ){
-        Row (
+            .padding(WindowInsets.statusBars.asPaddingValues())
+    ) {
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically
-        ){
+        ) {
             Image(
                 painter = painterResource(id = R.drawable.logoumy),
                 contentDescription = "",
@@ -74,7 +76,7 @@ fun RencanaStudyView(
                     .size(50.dp)
             )
             Spacer(modifier = Modifier.padding(start = 16.dp))
-            Column (modifier = Modifier.weight(1f)) {
+            Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = mahasiswa.nama,
                     fontWeight = FontWeight.Bold,
@@ -88,7 +90,7 @@ fun RencanaStudyView(
                     color = Color.White
                 )
             }
-            Box(){
+            Box {
                 Icon(
                     imageVector = Icons.Filled.Notifications,
                     contentDescription = "",
@@ -96,6 +98,7 @@ fun RencanaStudyView(
                 )
             }
         }
+
         Box(
             modifier = Modifier
                 .background(
@@ -107,12 +110,12 @@ fun RencanaStudyView(
                 )
                 .fillMaxSize(),
         ) {
-            Column (
+            Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(16.dp)
             ) {
-                Text (text = "Pilih Mata Kuliah Peminatan", fontWeight = FontWeight.Bold)
+                Text(text = "Pilih Mata Kuliah Peminatan", fontWeight = FontWeight.Bold)
                 Text(
                     text = "Silahkan pilih mata kuliah yang anda inginkan",
                     fontSize = 12.sp,
@@ -136,12 +139,12 @@ fun RencanaStudyView(
                     fontWeight = FontWeight.Light
                 )
                 Spacer(modifier = Modifier.padding(8.dp))
-                Row (
+                Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
-                    RuangKelas.listKelas.forEach() { listData ->
-                        Row (verticalAlignment = Alignment.CenterVertically) {
+                    RuangKelas.listKelas.forEach { listData ->
+                        Row(verticalAlignment = Alignment.CenterVertically) {
                             RadioButton(
                                 selected = pilihanKelas == listData,
                                 onClick = { pilihanKelas = listData }
@@ -157,7 +160,7 @@ fun RencanaStudyView(
                     text = "Klausul Persetujuan Mahasiswa",
                     fontWeight = FontWeight.Bold
                 )
-                Row (verticalAlignment = Alignment.CenterVertically) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
                     Checkbox(
                         checked = checked,
                         onCheckedChange = { checked = it },
@@ -170,14 +173,14 @@ fun RencanaStudyView(
                     )
                 }
                 Spacer(modifier = Modifier.padding(8.dp))
-                Row (
+                Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
                     Button(onClick = { onBackButtonClicked() }) {
                         Text("Kembali")
                     }
-                    Button(onClick = {onSubmitButtonClicked(listData) }, enabled = checked) {
+                    Button(onClick = { onSubmitButtonClicked(listData) }, enabled = checked) {
                         Text("Lanjut")
                     }
                 }
