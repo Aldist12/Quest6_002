@@ -7,10 +7,13 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -37,19 +40,19 @@ fun TampilHasilView(
     mahasiswa: Mahasiswa,
     rencanaStudi: RencanaStudy,
     onBackButtonClicked: () -> Unit
-){
-
-    Column (
+) {
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .background(color = colorResource(id = R.color.primary))
-    ){
-        Row (
+            .padding(WindowInsets.statusBars.asPaddingValues())
+    ) {
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically
-        ){
+        ) {
             Image(
                 painter = painterResource(id = R.drawable.logoumy),
                 contentDescription = "",
@@ -58,7 +61,7 @@ fun TampilHasilView(
                     .size(50.dp)
             )
             Spacer(modifier = Modifier.padding(start = 16.dp))
-            Column (modifier = Modifier.weight(1f)) {
+            Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = mahasiswa.nama,
                     fontWeight = FontWeight.Bold,
@@ -72,7 +75,7 @@ fun TampilHasilView(
                     color = Color.White
                 )
             }
-            Box{
+            Box {
                 Icon(
                     imageVector = Icons.Filled.Notifications,
                     contentDescription = "",
@@ -80,6 +83,7 @@ fun TampilHasilView(
                 )
             }
         }
+
         Box(
             modifier = Modifier
                 .background(
@@ -107,15 +111,15 @@ fun TampilHasilView(
                     fontSize = 14.sp
                 )
                 Spacer(modifier = Modifier.padding(8.dp))
-                TemplatesHasil(judulParam = "Nama" , isiParam = mahasiswa.nama)
+                TemplatesHasil(judulParam = "Nama", isiParam = mahasiswa.nama)
                 Spacer(modifier = Modifier.padding(4.dp))
-                TemplatesHasil(judulParam = "NIM" , isiParam = mahasiswa.nim)
+                TemplatesHasil(judulParam = "NIM", isiParam = mahasiswa.nim)
                 Spacer(modifier = Modifier.padding(4.dp))
-                TemplatesHasil(judulParam = "Email" , isiParam = mahasiswa.email)
+                TemplatesHasil(judulParam = "Email", isiParam = mahasiswa.email)
                 Spacer(modifier = Modifier.padding(4.dp))
-                TemplatesHasil(judulParam = "Matakuliah" , isiParam = rencanaStudi.mataKuliah)
+                TemplatesHasil(judulParam = "Matakuliah", isiParam = rencanaStudi.mataKuliah)
                 Spacer(modifier = Modifier.padding(4.dp))
-                TemplatesHasil(judulParam = "Kelas" , isiParam = rencanaStudi.kelas)
+                TemplatesHasil(judulParam = "Kelas", isiParam = rencanaStudi.kelas)
                 Spacer(modifier = Modifier.padding(16.dp))
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -133,12 +137,13 @@ fun TampilHasilView(
 }
 
 @Composable
-fun TemplatesHasil(judulParam:String, isiParam:String){
-    Column{
-        Row (
-            modifier = Modifier.fillMaxWidth().padding(8.dp),
+fun TemplatesHasil(judulParam: String, isiParam: String) {
+    Column {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp),
             horizontalArrangement = Arrangement.SpaceEvenly
-
         ) {
             Text(judulParam, modifier = Modifier.weight(0.8f))
             Text(":", modifier = Modifier.weight(0.2f))
