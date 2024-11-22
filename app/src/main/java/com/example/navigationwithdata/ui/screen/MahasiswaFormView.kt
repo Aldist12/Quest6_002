@@ -2,6 +2,7 @@ package com.example.navigationwithdata.ui.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,6 +17,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -192,3 +194,17 @@ fun MahasiswaFormView(
                 shape = RoundedCornerShape(50.dp)
             )
             Spacer(modifier = Modifier.padding(8.dp))
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                Button(onClick = { onBackButtonClicked() }) {
+                    Text(text = "Kembali", color = Color.White)
+                }
+                Button(onClick = { onSubmitButtonClicked(listData) }) {
+                    Text(text = "Simpan", color = Color.White)
+                }
+            }
+        }
+    }
+}
