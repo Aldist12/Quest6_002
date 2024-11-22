@@ -1,4 +1,4 @@
-package com.example.navigationwithdata.ui.screen
+package com.example.navigationwithdata.ui.view.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -40,7 +40,7 @@ import com.example.navigationwithdata.R
 import com.example.navigationwithdata.data.MataKuliah
 import com.example.navigationwithdata.data.RuangKelas
 import com.example.navigationwithdata.model.Mahasiswa
-import com.example.navigationwithdata.ui.widget.DynamicSelectedField
+import com.example.navigationwithdata.ui.view.widget.DynamicSelectedField
 
 @Composable
 fun RencanaStudyView(

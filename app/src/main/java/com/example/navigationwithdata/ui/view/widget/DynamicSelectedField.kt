@@ -1,4 +1,4 @@
-package com.example.navigationwithdata.ui.widget
+package com.example.navigationwithdata.ui.view.widget
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.DropdownMenuItem

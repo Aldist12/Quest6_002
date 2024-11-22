@@ -1,4 +1,4 @@
-package com.example.navigationwithdata.ui.viewmodel
+package com.example.navigationwithdata.ui.view.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.example.navigationwithdata.model.RencanaStudy
